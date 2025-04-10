@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "dev:trigger": "trigger dev",
+    "dev": "npx concurrently --kill-others --names \"next,trigger\" --prefix-colors \"yellow,blue\" \"next dev\" \"npm run dev:trigger\"",
+    "dev:trigger": "npx trigger.dev@latest dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,7 +23,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
-    "trigger.dev": "^3.3.17",
     "typescript": "^5"
   }
 }
