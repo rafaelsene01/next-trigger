@@ -10,7 +10,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tobyg74/tiktok-api-dl": "^1.2.8",
     "@trigger.dev/sdk": "^3.3.17",
+    "basic-ftp": "^5.0.5",
+    "nanoid": "^5.1.5",
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
