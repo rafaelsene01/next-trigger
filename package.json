@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx concurrently --kill-others --names \"next,trigger\" --prefix-colors \"yellow,blue\" \"next dev\" \"npm run dev:trigger\"",
+    "dev": "npx concurrently --kill-others --names \"next,trigger\" --prefix-colors \"yellow,blue\" \"next dev -p 3333\" \"npm run dev:trigger\"",
     "dev:trigger": "npx trigger.dev@latest dev",
     "build": "next build",
     "start": "next start",
