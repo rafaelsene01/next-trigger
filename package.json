@@ -5,16 +5,19 @@
   "scripts": {
     "dev": "npx concurrently --kill-others --names \"next,trigger\" --prefix-colors \"yellow,blue\" \"next dev\" \"npm run dev:trigger\"",
     "dev:trigger": "npx trigger.dev@latest dev",
+    "dev:react": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@tobyg74/tiktok-api-dl": "^1.2.8",
     "@trigger.dev/sdk": "^3.3.17",
     "basic-ftp": "^5.0.5",
     "nanoid": "^5.1.5",
     "next": "15.3.0",
+    "openai": "^4.98.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
