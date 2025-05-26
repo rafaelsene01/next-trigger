@@ -4,11 +4,9 @@ import { Downloader } from "@tobyg74/tiktok-api-dl";
 
 export async function tiktokForm({ url }: { url: string }) {
   try {
-    const { result, status } = await Downloader<"v3">(url);
+    const { result, status }: any = await Downloader<"v3">(url);
 
-    const { music }: any = result;
-
-    const urlMusic = music?.playUrl[0];
+    const urlMusic = result?.music?.playUrl?.at(0);
 
     return {
       status,
