@@ -7,7 +7,7 @@
     "dev:trigger": "npx trigger.dev@latest dev",
     "dev:react": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3333",
     "lint": "next lint"
   },
   "dependencies": {
