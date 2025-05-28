@@ -1,7 +1,7 @@
 "use server";
 
 import { tiktokAudioTranscript } from "@/trigger/tiktokAudioTranscript";
-import { tasks, runs } from "@trigger.dev/sdk/v3";
+import { tasks } from "@trigger.dev/sdk/v3";
 
 export async function tiktokFormTranscript({
   url,
@@ -21,21 +21,12 @@ export async function tiktokFormTranscript({
         queue: {
           // Levando em conta o Cliente, aqui posso customizar a quantidade de processos que sera executada na fila.
           name: "free-user", // + Math.random(),
-          concurrencyLimit: 1,
+          concurrencyLimit: 2,
         },
       }
     );
 
-    let run = await runs.retrieve(handle.id);
-
-    while (run.status !== "COMPLETED") {
-      if (run.status === "FAILED") throw new Error();
-      run = await await runs.retrieve(handle.id);
-      await new Promise((r) => setTimeout(() => r("done"), 2000));
-    }
-
-    const { output } = run;
-    return output;
+    return handle
   } catch (error) {
     console.log(error);
   }

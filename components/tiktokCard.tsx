@@ -3,6 +3,7 @@
 import { tiktokFormTranscript } from "@/app/actions/tiktopTranscript";
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import { useState, useTransition } from "react";
+import { Transcript } from "./transcript";
 
 export interface TiktokCardProps {
   id: string;
@@ -11,7 +12,8 @@ export interface TiktokCardProps {
 }
 
 export function TiktokCard({ urlMusic, url, id }: TiktokCardProps) {
-  const [text, setText] = useState<string>("");
+  const [runId, setRunId] = useState<string>("");
+  const [publicAccessToken, setPublicAccessToken] = useState<string>("");
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,7 +21,8 @@ export function TiktokCard({ urlMusic, url, id }: TiktokCardProps) {
     startTransition(async () => {
       try {
         const response = await tiktokFormTranscript({ url: urlMusic, id });
-        setText(response.text);
+        setRunId(response.id);
+        setPublicAccessToken(response.publicAccessToken);
       } catch (error) {
         console.log(error);
       }
@@ -68,7 +71,7 @@ export function TiktokCard({ urlMusic, url, id }: TiktokCardProps) {
             </Button>
           </Box>
         </Stack>
-        {text}
+        {runId && <Transcript accessToken={publicAccessToken} runId={runId} />}
       </form>
     </Paper>
   );
