@@ -1,6 +1,5 @@
 import { useRun } from "@trigger.dev/react-hooks";
 import { tiktokAudioTranscript } from "@/trigger/tiktokAudioTranscript";
-import { useEffect } from "react";
 
 export function Transcript({
   runId,
